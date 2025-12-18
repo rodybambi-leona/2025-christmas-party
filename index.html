@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四大天王之聖誕闖關遊戲</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --christmas-red: #c0392b;
+            --christmas-green: #27ae60;
+            --gold: #f1c40f;
+            --snow-white: #ecf0f1;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: var(--christmas-red);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .dress-code {
+            background-color: var(--christmas-green);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        .tab-bar {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .tab-item {
+            text-align: center;
+            flex: 1;
+            color: #777;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .tab-item.active {
+            color: var(--christmas-red);
+            font-weight: bold;
+        }
+
+        .content-section {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 行程卡片 */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--christmas-red);
+        }
+
+        .time {
+            font-weight: bold;
+            color: var(--christmas-red);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* 抽籤區域 */
+        .lottery-container {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+        }
+
+        #punishment-result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px dashed var(--christmas-red);
+            border-radius: 10px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--christmas-red);
+        }
+
+        .btn-draw {
+            background: var(--christmas-red);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(192, 57, 43, 0.4);
+        }
+
+        /* 勾選清單 */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .checklist-item input {
+            margin-right: 15px;
+            transform: scale(1.5);
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .snack-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .dot { height: 15px; width: 15px; border-radius: 50%; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎄 四大天王 🎄</h1>
+    <p>聖誕闖關遊戲專屬手冊</p>
+</header>
+
+<div class="dress-code">
+    👗 DRESS CODE：兩天都要有「聖誕元素」🎅
+</div>
+
+<div class="tab-bar">
+    <div class="tab-item active" onclick="showSection('schedule', this)">
+        <i class="fas fa-calendar-alt fa-2x"></i><div>行程</div>
+    </div>
+    <div class="tab-item" onclick="showSection('punishment', this)">
+        <i class="fas fa-dice fa-2x"></i><div>抽懲罰</div>
+    </div>
+    <div class="tab-item" onclick="showSection('checklist', this)">
+        <i class="fas fa-check-square fa-2x"></i><div>清單</div>
+    </div>
+</div>
+
+<div id="schedule" class="content-section active">
+    <h3>12/24 聖誕夜</h3>
+    <div class="card">
+        <span class="time">15:30 集合報到</span>
+        <strong>蒂米琪精品婚紗 Demetrios</strong><br>
+        📍 士林區中山北路五段645號<br>
+        ✨ 任務：沈薇量婚紗（約15分鐘）
+    </div>
+    <div class="card">
+        <span class="time">16:00 移防淡水</span>
+        搭乘 Uber 前往 <strong>【蘊泉庄】</strong> 辦理入住。
+    </div>
+    <div class="card" style="border-left-color: var(--gold);">
+        <span class="time">18:00 聖誕大餐</span>
+        <strong>La Villa Danshui</strong><br>
+        📍 淡水區中正路261號<br>
+        🏆 團康遊戲時間：獲勝者領取「Eva 限定獎品」，最後一名準備抽懲罰！
+    </div>
+    <div class="card">
+        <span class="time">22:00 派對時間</span>
+        卸妝完畢 Chill 活動：<br>
+        🔴🟢🔵⚪ 每人準備四色零食。
+    </div>
+
+    <h3>12/25 聖誕節</h3>
+    <div class="card">
+        <span class="time">11:00 退房</span>
+        執行懲罰任務：櫃檯人員死亡瞪視。
+    </div>
+    <div class="card">
+        <span class="time">12:00 老街巡禮</span>
+        淡水老街吃吃喝喝 + 畫像 + 執行殘餘懲罰。
+    </div>
+</div>
+
+<div id="punishment" class="content-section">
+    <div class="lottery-container">
+        <h2>💀 命運之輪 💀</h2>
+        <p>最後一名請按下按鈕決定你的宿命</p>
+        <div id="punishment-result">等待命運宣判...</div>
+        <button class="btn-draw" onclick="drawPunishment()">隨機抽取懲罰</button>
+    </div>
+</div>
+
+<div id="checklist" class="content-section">
+    <h3>✅ 任務勾選表單</h3>
+    <div id="checklist-container">
+        </div>
+</div>
+
+<script>
+    const punishments = [
+        "🇹🇷 玩土耳其冰淇淋，對老闆不耐煩 3 分鐘",
+        "😐 退房時交還房卡，瞪著櫃檯人員不發一語直到走出大門",
+        "🚲 騎協力車時破口大罵「這什麼爛車」持續 3 分鐘",
+        "🤫 找人跟你說謝謝，手指蓋住他的嘴，說出「小美專屬台詞」"
+    ];
+
+    const missions = [
+        "沈薇完成婚紗尺寸測量",
+        "全體穿著聖誕元素拍照",
+        "團康遊戲獲勝者領取 Eva 獎品",
+        "集齊紅、綠、藍、白四款零食",
+        "在淡水老街完成路邊畫像",
+        "最後一名完成抽中的懲罰 (需錄影)"
+    ];
+
+    function showSection(sectionId, element) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+        element.classList.add('active');
+    }
+
+    function drawPunishment() {
+        const resultDiv = document.getElementById('punishment-result');
+        resultDiv.innerHTML = "正在挑選受難者...";
+        
+        let count = 0;
+        const interval = setInterval(() => {
+            resultDiv.innerHTML = punishments[Math.floor(Math.random() * punishments.length)];
+            count++;
+            if (count > 10) {
+                clearInterval(interval);
+                resultDiv.style.backgroundColor = "#fff5f5";
+            }
+        }, 100);
+    }
+
+    function initChecklist() {
+        const container = document.getElementById('checklist-container');
+        missions.forEach((m, index) => {
+            const div = document.createElement('div');
+            div.className = 'checklist-item';
+            div.innerHTML = `
+                <input type="checkbox" id="m${index}" onclick="toggleMission(this)">
+                <label for="m${index}">${m}</label>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function toggleMission(checkbox) {
+        if (checkbox.checked) {
+            checkbox.nextElementSibling.classList.add('done');
+        } else {
+            checkbox.nextElementSibling.classList.remove('done');
+        }
+    }
+
+    window.onload = initChecklist;
+</script>
+
+</body>
+</html>
