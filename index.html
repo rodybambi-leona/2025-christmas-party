@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>四大天王聖誕闖關</title>
+    <title>四大天王聖誕派對</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -37,16 +37,33 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
+        /* 標題與副標題粗體設定 */
+        header h1 {
+            margin: 0;
+            font-size: 1.6em;
+            letter-spacing: 2px;
+            font-weight: 800; /* 強調粗體 */
+        }
+
+        header p {
+            margin: 8px 0 0;
+            font-size: 0.95em;
+            font-weight: 700; /* 強調粗體 */
+            opacity: 1;
+        }
+
+        /* 置頂 Dress Code 粗體設定 */
         .dress-code {
             background-color: var(--muted-green);
             color: var(--cream-bg);
             padding: 12px;
             text-align: center;
-            font-weight: bold;
+            font-weight: 800; /* 強調粗體 */
             font-size: 0.95em;
             border-radius: 15px;
             margin: 15px;
             border: 2px solid var(--dark-brown);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
         }
 
         .tab-bar {
@@ -61,6 +78,7 @@
             z-index: 100;
             border-top: 3px dashed var(--muted-green);
             border-radius: 20px 20px 0 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
         }
 
         .tab-item {
@@ -71,6 +89,7 @@
             cursor: pointer;
         }
 
+        .tab-item i { font-size: 1.6em; margin-bottom: 3px; display: block; }
         .tab-item.active {
             color: var(--warm-red);
             font-weight: bold;
@@ -96,6 +115,7 @@
             border-bottom: 2px dashed var(--warm-yellow);
             padding-bottom: 10px;
             text-align: center;
+            font-weight: 800;
         }
 
         .checklist-item {
@@ -118,11 +138,19 @@
             border: 2px solid var(--muted-green);
             border-radius: 50%; margin-right: 15px;
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .checklist-item input[type="checkbox"]:checked { background-color: var(--muted-green); position: relative; }
         .checklist-item input[type="checkbox"]:checked::after {
             content: '✔'; color: white; position: absolute; left: 4px; top: -2px; font-size: 16px;
+        }
+
+        /* 關卡名稱粗體設定 */
+        .checklist-item label {
+            font-weight: 800; /* 強調粗體 */
+            font-size: 1.05em;
+            line-height: 1.4;
         }
 
         .done label { text-decoration: line-through; color: #aaa; }
@@ -135,7 +163,8 @@
             border-radius: 10px;
             font-size: 0.8em;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
         #punishment-card {
@@ -149,9 +178,10 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2em;
-            font-weight: bold;
+            font-weight: 800;
             white-space: pre-wrap;
             text-align: center;
+            line-height: 1.6;
         }
 
         .btn-draw {
@@ -160,18 +190,22 @@
             border: 2px solid var(--dark-brown);
             padding: 15px 30px;
             border-radius: 50px;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            font-weight: 800;
             margin-top: 20px;
             width: 100%;
             font-family: inherit;
+            box-shadow: 3px 3px 0px var(--dark-brown);
         }
+        
+        .btn-draw:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--dark-brown); }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🎄 四大天王 首次團康活動 🎄</h1>
-    <p>聖誕闖關交換禮物</p>
+    <h1>🎄 四大天王聖誕派對 🎅🏻</h1>
+    <p>首次團康活動之聖誕闖關大挑戰</p>
 </header>
 
 <div class="dress-code">
@@ -183,15 +217,15 @@
 </div>
 
 <div id="punishment-tab" class="content-section">
-    <div style="text-align: center; background: white; padding: 20px; border-radius: 20px; border: 2px solid var(--dark-brown);">
-        <h2 style="color: var(--warm-red);">😈 命運之手 😈</h2>
+    <div style="text-align: center; background: white; padding: 25px; border-radius: 20px; border: 2px solid var(--dark-brown); box-shadow: 4px 4px 0px rgba(0,0,0,0.1);">
+        <h2 style="color: var(--warm-red); font-weight: 800;">😈 命運之手 😈</h2>
         <div id="punishment-card">準備好迎接挑戰了嗎？</div>
         <button class="btn-draw" onclick="drawPunishment()">抽取懲罰</button>
     </div>
 </div>
 
 <div id="packing-tab" class="content-section">
-    <h3>🎒 出發前準備清單</h3>
+    <h3 style="margin-top: 0;">🎒 出發前準備清單</h3>
     <div id="packing-container"></div>
 </div>
 
@@ -212,11 +246,11 @@
         {
             date: "12/24 (Wed) 聖誕夜",
             items: [
-                { title: "關卡一：沈薇婚紗尺寸測量", desc: "15:30 集合，任務時間約15分鐘", mapUrl: "https://maps.app.goo.gl/9n6R1m8uE582YatA9" },
-                { title: "關卡二：出發蘊泉庄", desc: "16:00 搭車前往淡水", mapUrl: "https://maps.app.goo.gl/uX3LhRk2z5Gv4vG19" },
+                { title: "關卡一：沈薇婚紗尺寸測量", desc: "15:30 集合，任務時間約15分鐘", mapUrl: "https://www.google.com/maps/search/?api=1&query=蒂米琪精品婚紗+Demetrios" },
+                { title: "關卡二：出發蘊泉庄", desc: "16:00 搭車前往淡水", mapUrl: "https://www.google.com/maps/search/?api=1&query=蘊泉庄" },
                 { title: "關卡三：放好行李佈置遊戲內容", desc: "準備迎接夜晚的挑戰！", mapUrl: "" },
-                { title: "關卡四：浪漫晚餐 (La Villa)", desc: "18:00 補充體力準備接受試煉", mapUrl: "https://maps.app.goo.gl/5vXU6q8XU6q8XU6q8" },
-                { title: "關卡五：闖關任務", desc: "大約20:30-21:00開始遊戲", mapUrl: "" }, // 補上這個逗點了！
+                { title: "關卡四：浪漫晚餐 (La Villa)", desc: "18:00 補充體力準備接受試煉", mapUrl: "https://www.google.com/maps/search/?api=1&query=La+Villa+Danshui" },
+                { title: "關卡五：闖關任務", desc: "大約20:30-21:00開始遊戲", mapUrl: "" },
                 { title: "Chill Time", desc: "洗卸後帶著零食、水集合開始睡前儀式", mapUrl: "" }
             ]
         },
@@ -224,7 +258,7 @@
             date: "12/25 (Thu) 聖誕節",
             items: [
                 { title: "挑戰一：退房の試煉", desc: "11:00 執行櫃檯懲罰 (如果抽中)", mapUrl: "" },
-                { title: "挑戰二：淡水老街 Q 版畫像", desc: "12:00 任務：對著畫家說出小美式稱讚辭", mapUrl: "" },
+                { title: "挑戰二：淡水老街 Q 版畫像", desc: "12:00 任務：對著畫家說出小美式稱讚辭", mapUrl: "https://www.google.com/maps/search/?api=1&query=淡水老街" },
                 { title: "挑戰三：執行其餘懲罰", desc: "在老街人潮中勇敢完成任務吧！", mapUrl: "" }
             ]
         }
@@ -232,7 +266,7 @@
 
     const punishments = [
         "🍦 玩土耳其冰淇淋\n對老闆不耐煩三分鐘\n結束後對老闆說：「你不平凡。」",
-        "🏨 退房時負責交還房卡\n同時要瞪著櫃檯人員不發一語\n直到走出大門。",
+        "🏨 退房時負責交還房卡\n同時要瞪著櫃檯人員不發一語\n直到走出門。",
         "🚲 騎協力車時破口大罵\n「這是什麼爛車！」\n持續 3 分鐘。",
         "🤫 找到一個人跟你說謝謝\n手指蓋住他的嘴唇\n說出：「小美式狗語稱讚。」"
     ];
@@ -269,6 +303,8 @@
 
     function drawPunishment() {
         const card = document.getElementById('punishment-card');
+        const btn = document.querySelector('.btn-draw');
+        btn.disabled = true;
         let count = 0;
         const timer = setInterval(() => {
             card.innerHTML = punishments[Math.floor(Math.random() * punishments.length)];
@@ -276,6 +312,7 @@
             if (count > 15) {
                 clearInterval(timer);
                 card.style.background = "#fff5f5";
+                btn.disabled = false;
             }
         }, 100);
     }
