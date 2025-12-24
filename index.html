@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>四大天王聖誕派對</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --warm-red: #D65A4F;
@@ -37,28 +37,25 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* 標題與副標題粗體設定 */
         header h1 {
             margin: 0;
             font-size: 1.6em;
             letter-spacing: 2px;
-            font-weight: 800; /* 強調粗體 */
+            font-weight: 800;
         }
 
         header p {
             margin: 8px 0 0;
             font-size: 0.95em;
-            font-weight: 700; /* 強調粗體 */
-            opacity: 1;
+            font-weight: 700;
         }
 
-        /* 置頂 Dress Code 粗體設定 */
         .dress-code {
             background-color: var(--muted-green);
             color: var(--cream-bg);
             padding: 12px;
             text-align: center;
-            font-weight: 800; /* 強調粗體 */
+            font-weight: 800;
             font-size: 0.95em;
             border-radius: 15px;
             margin: 15px;
@@ -92,7 +89,7 @@
         .tab-item i { font-size: 1.6em; margin-bottom: 3px; display: block; }
         .tab-item.active {
             color: var(--warm-red);
-            font-weight: bold;
+            font-weight: 800;
         }
 
         .content-section {
@@ -146,9 +143,8 @@
             content: '✔'; color: white; position: absolute; left: 4px; top: -2px; font-size: 16px;
         }
 
-        /* 關卡名稱粗體設定 */
         .checklist-item label {
-            font-weight: 800; /* 強調粗體 */
+            font-weight: 800;
             font-size: 1.05em;
             line-height: 1.4;
         }
@@ -197,8 +193,6 @@
             font-family: inherit;
             box-shadow: 3px 3px 0px var(--dark-brown);
         }
-        
-        .btn-draw:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--dark-brown); }
     </style>
 </head>
 <body>
@@ -244,20 +238,26 @@
 <script>
     const scheduleData = [
         {
+            date: "12/15 (Mon) 聖誕前哨戰",
+            items: [
+                { title: "聖誕大餐：La Villa Danshui", desc: "12:00 提前慶祝，順便討論交換禮物細節！", mapUrl: "https://www.google.com/maps/search/?api=1&query=La+Villa+Danshui" }
+            ]
+        },
+        {
             date: "12/24 (Wed) 聖誕夜",
             items: [
                 { title: "關卡一：沈薇婚紗尺寸測量", desc: "15:30 集合，任務時間約15分鐘", mapUrl: "https://www.google.com/maps/search/?api=1&query=蒂米琪精品婚紗+Demetrios" },
-                { title: "關卡二：出發蘊泉庄", desc: "16:00 搭車前往淡水", mapUrl: "https://www.google.com/maps/search/?api=1&query=蘊泉庄" },
+                { title: "關卡二：出發蘊泉庄", desc: "16:00 前往淡水辦理入住", mapUrl: "https://www.google.com/maps/search/?api=1&query=蘊泉庄" },
                 { title: "關卡三：放好行李佈置遊戲內容", desc: "準備迎接夜晚的挑戰！", mapUrl: "" },
-                { title: "關卡四：浪漫晚餐 (La Villa)", desc: "18:00 補充體力準備接受試煉", mapUrl: "https://www.google.com/maps/search/?api=1&query=La+Villa+Danshui" },
-                { title: "關卡五：闖關任務", desc: "大約20:30-21:00開始遊戲", mapUrl: "" },
+                { title: "關卡四：飯店外送同樂會", desc: "18:00 叫外送大餐，大口吃肉補充體力！", mapUrl: "" },
+                { title: "關卡五：闖關任務", desc: "大約20:30-21:00開始正式對決", mapUrl: "" },
                 { title: "Chill Time", desc: "洗卸後帶著零食、水集合開始睡前儀式", mapUrl: "" }
             ]
         },
         {
             date: "12/25 (Thu) 聖誕節",
             items: [
-                { title: "挑戰一：退房の試煉", desc: "11:00 執行櫃檯懲罰 (如果抽中)", mapUrl: "" },
+                { title: "挑戰一：退房の試煉", desc: "11:00 執行櫃檯瞪視懲罰 (如果抽中)", mapUrl: "" },
                 { title: "挑戰二：淡水老街 Q 版畫像", desc: "12:00 任務：對著畫家說出小美式稱讚辭", mapUrl: "https://www.google.com/maps/search/?api=1&query=淡水老街" },
                 { title: "挑戰三：執行其餘懲罰", desc: "在老街人潮中勇敢完成任務吧！", mapUrl: "" }
             ]
